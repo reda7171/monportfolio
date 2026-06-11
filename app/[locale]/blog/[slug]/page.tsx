@@ -5,7 +5,7 @@ import { Clock, Tag, ChevronLeft, Share2, MessageCircle, ArrowRight } from "luci
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
-import { ARTICLES } from "../page";
+import { ARTICLES } from "@/lib/blog-data";
 
 // ─── SEO Metadata ─────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {

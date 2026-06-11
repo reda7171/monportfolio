@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { ARTICLES } from "./[locale]/blog/page";
+import { ARTICLES } from "@/lib/blog-data";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://wedev.ma";
 const LOCALES = ["fr", "ar", "en"];
