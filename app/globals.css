@@ -457,6 +457,13 @@ body {
 }
 .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
+/* Loading dots bounce */
+@keyframes wedev-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%           { transform: translateY(-10px); }
+}
+
+
 /* ─────────────────────────────────────────────
    TYPOGRAPHY
 ───────────────────────────────────────────── */

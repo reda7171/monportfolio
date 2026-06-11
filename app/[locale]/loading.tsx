@@ -14,21 +14,20 @@ export default function Loading() {
           <div className="skeleton w-24 h-2.5 rounded" />
         </div>
 
-        {/* Dots loader */}
+        {/* Dots loader — pure CSS via inline styles */}
         <div className="flex gap-1.5">
           {[0, 1, 2].map(i => (
-            <div key={i} className="w-2 h-2 rounded-full bg-[hsl(var(--primary)/.6)]"
-              style={{ animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite` }} />
+            <div
+              key={i}
+              className="w-2 h-2 rounded-full bg-[hsl(var(--primary)/.6)]"
+              style={{
+                animation: "wedev-bounce 1.2s ease-in-out infinite",
+                animationDelay: `${i * 0.2}s`,
+              }}
+            />
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes bounce {
-          0%, 60%, 100% { transform: translateY(0); }
-          30% { transform: translateY(-10px); }
-        }
-      `}</style>
     </div>
   );
 }
