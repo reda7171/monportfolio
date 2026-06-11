@@ -93,28 +93,35 @@ export function TestimonialsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-10"
+          className="max-w-4xl mx-auto mb-12 relative"
         >
+          {/* Subtle animated glow behind the active card */}
+          <div className={`absolute -inset-1 bg-gradient-to-r ${testimonials[current].gradient} rounded-[var(--radius-lg)] blur-xl opacity-20 animate-pulse-glow transition-all duration-700 pointer-events-none`} />
+
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -30 }}
-              transition={{ duration: 0.35 }}
-              className="card p-8 md:p-10 relative overflow-hidden"
+              initial={{ opacity: 0, scale: 0.97, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: -10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="card p-8 md:p-12 relative overflow-hidden bg-[hsl(var(--surface))] border border-[hsl(var(--border))] z-10 shadow-xl"
             >
+              {/* Noise overlay for premium feel */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")" }} />
+
               {/* Quote icon */}
               <Quote
-                size={64}
-                className="absolute top-4 right-6 text-[hsl(var(--primary)/.08)] rotate-180"
+                size={120}
+                strokeWidth={1}
+                className="absolute -top-6 -right-6 text-[hsl(var(--primary)/.04)] rotate-180 pointer-events-none"
               />
 
               {/* Stars */}
               <StarRating rating={testimonials[current].rating} />
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-[hsl(var(--foreground))] leading-relaxed font-medium mt-4 mb-6 italic">
+              <p className="text-xl md:text-2xl text-[hsl(var(--foreground))] leading-relaxed font-medium mt-6 mb-8 italic relative z-10">
                 "{testimonials[current].body}"
               </p>
 
@@ -180,10 +187,13 @@ export function TestimonialsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               onClick={() => setCurrent(i)}
-              className={`card p-4 text-left cursor-pointer transition-all duration-200 ${
-                i === current ? "border-[hsl(var(--primary)/.5)] bg-[hsl(var(--primary)/.04)]" : "hover:border-[hsl(var(--border-strong))]"
+              className={`card p-4 text-left cursor-pointer transition-all duration-300 relative overflow-hidden group ${
+                i === current ? "border-[hsl(var(--primary)/.4)] shadow-md" : "hover:border-[hsl(var(--border-strong))] opacity-70 hover:opacity-100"
               }`}
             >
+              {i === current && (
+                <div className={`absolute inset-0 bg-gradient-to-br ${t.gradient} opacity-5 pointer-events-none`} />
+              )}
               <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${t.gradient} flex items-center justify-center text-white text-xs font-bold mb-2`}>
                 {t.initials}
               </div>
