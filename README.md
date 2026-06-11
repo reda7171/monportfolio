@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WeDev Platform
 
-## Getting Started
+> Plateforme SaaS de solutions digitales pour PME marocaines — portfolio développeur + marketplace + système de démos live.
 
-First, run the development server:
+[![CI](https://github.com/reda7171/monportfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/reda7171/monportfolio/actions)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?logo=postgresql)
+
+---
+
+## Stack technique
+
+| Couche | Technologie |
+|---|---|
+| Framework | Next.js 15 (App Router, Server Components) |
+| Language | TypeScript 5 strict |
+| Styling | Tailwind CSS + CSS Variables (HSL) |
+| UI | Shadcn/ui + Framer Motion |
+| Auth | Better Auth (email/password + Google OAuth optionnel) |
+| ORM | Prisma v7 |
+| Database | PostgreSQL 16 (Docker) |
+| i18n | next-intl (FR, AR, EN) |
+| Uploads | API route locale (`/api/upload`) |
+| CI/CD | GitHub Actions |
+
+---
+
+## Démarrage rapide
+
+### 1. Prérequis
+
+- Node.js 20+
+- Docker Desktop
+- Git
+
+### 2. Installation
+
+```bash
+git clone https://github.com/reda7171/monportfolio.git
+cd monportfolio/wedev
+npm install
+```
+
+### 3. Variables d'environnement
+
+```bash
+cp .env.example .env.local
+```
+
+### 4. Base de données
+
+```bash
+docker-compose up -d
+npx prisma migrate dev
+npx prisma db seed
+```
+
+### 5. Lancer le serveur
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+```
+wedev/
+├── app/
+│   ├── [locale]/              # Routes i18n (fr, ar, en)
+│   │   ├── page.tsx           # Landing page
+│   │   ├── marketplace/       # Marketplace + pages produits
+│   │   ├── blog/              # Blog SEO + articles
+│   │   ├── auth/              # Login + Register
+│   │   ├── dashboard/         # Dashboard client
+│   │   ├── admin/             # Dashboard admin
+│   │   │   ├── products/      # CRUD produits
+│   │   │   ├── orders/        # Pipeline commandes
+│   │   │   ├── contacts/      # Pipeline contacts
+│   │   │   └── blog/          # Gestion articles
+│   │   ├── demo/[slug]/       # Session demo chrono
+│   │   ├── not-found.tsx      # 404 animée
+│   │   └── loading.tsx        # Skeleton loader
+│   ├── api/
+│   │   ├── auth/              # Better Auth handler
+│   │   ├── contact/           # Formulaire contact
+│   │   └── upload/            # Upload local
+│   ├── sitemap.ts
+│   └── robots.ts
+├── components/
+│   ├── marketing/             # Sections landing page
+│   └── ui/                    # Design system
+├── lib/
+│   ├── auth.ts
+│   ├── auth-client.ts
+│   └── db.ts
+├── messages/                  # fr.json, ar.json, en.json
+├── prisma/
+│   ├── schema.prisma
+│   └── seed.ts
+├── docker-compose.yml
+└── .github/workflows/ci.yml
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| URL | Description |
+|---|---|
+| `/fr` | Landing page complète |
+| `/fr/marketplace` | Marketplace (filtres, tri, vues) |
+| `/fr/marketplace/[slug]` | Page produit avec démo |
+| `/fr/blog` | Liste articles SEO |
+| `/fr/blog/[slug]` | Article avec metadata OG |
+| `/fr/auth/login` | Connexion |
+| `/fr/auth/register` | Inscription |
+| `/fr/dashboard` | Dashboard client |
+| `/fr/admin` | Dashboard admin KPI |
+| `/fr/admin/products` | CRUD produits |
+| `/fr/admin/orders` | Pipeline commandes |
+| `/fr/admin/contacts` | Pipeline contacts |
+| `/fr/admin/blog` | Gestion articles |
+| `/sitemap.xml` | Sitemap SEO dynamique |
+| `/robots.txt` | Règles robots |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Commandes DB utiles
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx prisma studio          # UI graphique
+npx prisma migrate reset   # Reset complet
+npx prisma generate        # Régénérer client
+npx prisma db push         # Push schema (dev)
+```
+
+---
+
+## Déploiement
+
+```bash
+docker-compose up -d
+npx prisma migrate deploy
+npx prisma db seed
+npm run build
+npm start
+```
+
+---
+
+## Licence
+
+Propriété de WeDev. Tous droits réservés.
