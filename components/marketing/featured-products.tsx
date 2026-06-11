@@ -73,13 +73,14 @@ function ProductCard({ product, index }: { product: typeof featuredProducts[0]; 
       whileHover={{ y: -6 }}
       className="card group overflow-hidden flex flex-col"
     >
-      {/* Product image / gradient header */}
-      <div className={`relative h-44 bg-gradient-to-br ${product.gradient} overflow-hidden`}>
+      {/* Premium dark mode header */}
+      <div className={`relative h-44 bg-[hsl(var(--surface))] border-b border-[hsl(var(--border))] overflow-hidden`}>
+        <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-15 dark:opacity-[0.15] mix-blend-normal`} />
         {/* Animated dots pattern */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
             backgroundSize: "20px 20px",
           }}
         />
@@ -89,23 +90,23 @@ function ProductCard({ product, index }: { product: typeof featuredProducts[0]; 
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-[var(--radius-lg)] flex items-center justify-center border border-white/30 shadow-lg"
+            className="w-20 h-20 bg-[hsl(var(--surface))] rounded-[var(--radius-lg)] flex items-center justify-center border border-[hsl(var(--border))] shadow-md"
           >
-            <ShoppingBag size={36} className="text-white" />
+            <ShoppingBag size={36} className="text-[hsl(var(--foreground-muted))]" />
           </motion.div>
         </div>
 
         {/* Featured badge */}
         {product.isFeatured && (
-          <div className="absolute top-3 left-3 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/30">
+          <div className="absolute top-3 left-3 bg-amber-500/10 text-amber-500 border-amber-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full border shadow-sm">
             ⭐ Vedette
           </div>
         )}
 
         {/* Category */}
         <div
-          className="absolute top-3 right-3 text-white text-[10px] font-bold px-2.5 py-1 rounded-full"
-          style={{ background: `${product.categoryColor}aa`, backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.3)" }}
+          className="absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm"
+          style={{ background: `${product.categoryColor}20`, color: product.categoryColor, border: `1px solid ${product.categoryColor}40` }}
         >
           {product.category}
         </div>

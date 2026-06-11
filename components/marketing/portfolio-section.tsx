@@ -95,9 +95,10 @@ export function PortfolioSection() {
               whileHover={{ y: -6 }}
               className="card group overflow-hidden flex flex-col"
             >
-              {/* Gradient header */}
-              <div className={`h-40 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
+              {/* Premium dark mode header */}
+              <div className={`h-40 relative overflow-hidden bg-[hsl(var(--surface))] border-b border-[hsl(var(--border))]`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-15 dark:opacity-[0.15] mix-blend-normal`} />
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
                 {/* Mock window chrome */}
                 <div className="absolute top-3 left-3 flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-white/40" />
@@ -111,7 +112,7 @@ export function PortfolioSection() {
                   <div className="h-8 bg-white/15 rounded-[var(--radius)] mt-3" />
                 </div>
                 {/* Type badge */}
-                <div className="absolute top-3 right-3 text-[9px] font-bold bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full border border-white/30">
+                <div className="absolute top-3 right-3 text-[9px] font-bold bg-[hsl(var(--surface))] text-[hsl(var(--foreground))] px-2 py-0.5 rounded-full border border-[hsl(var(--border))] shadow-sm">
                   {project.type}
                 </div>
               </div>
