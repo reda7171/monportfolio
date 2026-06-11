@@ -3,6 +3,7 @@ import { HeroSection }          from "@/components/marketing/hero-section";
 import { StatsSection }         from "@/components/marketing/stats-section";
 import { ServicesSection }      from "@/components/marketing/services-section";
 import { FeaturedProductsSection } from "@/components/marketing/featured-products";
+import { PortfolioSection }     from "@/components/marketing/portfolio-section";
 import { TestimonialsSection }  from "@/components/marketing/testimonials-section";
 import { FAQSection }           from "@/components/marketing/faq-section";
 import { ContactSection }       from "@/components/marketing/contact-section";
@@ -16,6 +17,7 @@ export default function HomePage() {
       <StatsSection />
       <ServicesSection />
       <FeaturedProductsSection />
+      <PortfolioSection />
       <TestimonialsSection />
       <FAQSection />
       <ContactSection />

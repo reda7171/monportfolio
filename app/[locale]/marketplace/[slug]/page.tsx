@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import {

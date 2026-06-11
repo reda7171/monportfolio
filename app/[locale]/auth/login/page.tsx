@@ -25,7 +25,8 @@ export default function LoginPage() {
     try {
       const { data, error: err } = await authClient.signIn.email({ email, password });
       if (err) { setError(err.message ?? "Email ou mot de passe incorrect"); setLoading(false); return; }
-      if (data?.user?.role === "admin") router.push(`/${locale}/admin`);
+      const user = data?.user as { role?: string } | undefined;
+      if (user?.role === "admin") router.push(`/${locale}/admin`);
       else router.push(`/${locale}/dashboard`);
     } catch {
       setError("Une erreur est survenue. Réessayez.");
