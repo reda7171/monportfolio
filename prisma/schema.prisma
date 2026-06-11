@@ -1,0 +1,349 @@
+// This is your Prisma schema file
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// AUTH (Better Auth compatible)
+// ─────────────────────────────────────────────
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          Role      @default(CLIENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]
+  orders        Order[]
+  reviews       Review[]
+  contacts      Contact[]
+  demoSessions  DemoSession[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  userId                String
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("accounts")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("verifications")
+}
+
+// ─────────────────────────────────────────────
+// PRODUCTS & MARKETPLACE
+// ─────────────────────────────────────────────
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  nameAr      String
+  slug        String    @unique
+  description String?
+  icon        String?
+  color       String?
+  createdAt   DateTime  @default(now())
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id              String   @id @default(cuid())
+  title           String
+  titleAr         String
+  slug            String   @unique
+  description     String
+  descriptionAr   String
+  features        String[] // array of feature strings
+  featuresAr      String[]
+  price           Float    @default(0)
+  priceLabel      String?  // ex: "À partir de 2500 MAD"
+  categoryId      String
+  techStack       String[] // ["Next.js", "PostgreSQL", ...]
+  demoUrl         String?
+  whatsappMsg     String?  // message pré-rempli WhatsApp
+  videoUrl        String?
+  thumbnailUrl    String?
+  status          ProductStatus @default(DRAFT)
+  isFeatured      Boolean  @default(false)
+  salesCount      Int      @default(0)
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  changelog       Json?    // [{ version, date, changes[] }]
+  faq             Json?    // [{ question, answer }]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  category     Category       @relation(fields: [categoryId], references: [id])
+  images       ProductImage[]
+  orders       OrderItem[]
+  reviews      Review[]
+  demoAccounts DemoAccount[]
+  licenses     License[]
+
+  @@map("products")
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  url       String
+  alt       String?
+  order     Int     @default(0)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
+}
+
+model DemoAccount {
+  id        String @id @default(cuid())
+  productId String
+  role      String // "Admin", "Caissier", "Manager"
+  email     String
+  password  String
+  note      String?
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("demo_accounts")
+}
+
+// ─────────────────────────────────────────────
+// ORDERS & LICENSES
+// ─────────────────────────────────────────────
+model Order {
+  id          String      @id @default(cuid())
+  userId      String?
+  customerName String
+  customerEmail String
+  customerPhone String?
+  status      OrderStatus @default(PENDING)
+  totalAmount Float
+  notes       String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  user  User?       @relation(fields: [userId], references: [id])
+  items OrderItem[]
+  licenses License[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  price     Float
+  quantity  Int    @default(1)
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model License {
+  id         String    @id @default(cuid())
+  key        String    @unique @default(cuid())
+  productId  String
+  orderId    String
+  userId     String?
+  expiresAt  DateTime?
+  isActive   Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+
+  product Product @relation(fields: [productId], references: [id])
+  order   Order   @relation(fields: [orderId], references: [id])
+
+  @@map("licenses")
+}
+
+// ─────────────────────────────────────────────
+// REVIEWS & TESTIMONIALS
+// ─────────────────────────────────────────────
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  userId    String
+  rating    Int      // 1-5
+  title     String?
+  body      String
+  isApproved Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@map("reviews")
+}
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  name       String
+  role       String?
+  company    String?
+  avatarUrl  String?
+  body       String
+  bodyAr     String?
+  rating     Int      @default(5)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  @@map("testimonials")
+}
+
+// ─────────────────────────────────────────────
+// DEMO SESSIONS
+// ─────────────────────────────────────────────
+model DemoSession {
+  id         String   @id @default(cuid())
+  productId  String
+  userId     String?
+  sessionKey String   @unique @default(cuid())
+  email      String
+  password   String
+  role       String
+  expiresAt  DateTime
+  isActive   Boolean  @default(true)
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  user    User?   @relation(fields: [userId], references: [id])
+
+  @@map("demo_sessions")
+}
+
+// ─────────────────────────────────────────────
+// BLOG
+// ─────────────────────────────────────────────
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  titleAr     String?
+  slug        String   @unique
+  excerpt     String?
+  excerptAr   String?
+  content     String   @db.Text
+  contentAr   String?  @db.Text
+  coverImage  String?
+  tags        String[]
+  isPublished Boolean  @default(false)
+  publishedAt DateTime?
+  seoTitle    String?
+  seoDesc     String?
+  readingTime Int?     // minutes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+// ─────────────────────────────────────────────
+// CONTACTS / LEADS
+// ─────────────────────────────────────────────
+model Contact {
+  id        String        @id @default(cuid())
+  userId    String?
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  productId String?
+  status    ContactStatus @default(NEW)
+  createdAt DateTime      @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("contacts")
+}
+
+model Coupon {
+  id          String     @id @default(cuid())
+  code        String     @unique
+  discount    Float      // percentage 0-100
+  maxUses     Int?
+  usedCount   Int        @default(0)
+  expiresAt   DateTime?
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+
+  @@map("coupons")
+}
+
+// ─────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+enum ProductStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  DELIVERED
+  CANCELLED
+}
+
+enum ContactStatus {
+  NEW
+  INPROGRESS
+  RESOLVED
+  CLOSED
+}

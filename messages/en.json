@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "home": "Home",
+    "marketplace": "Solutions",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "admin": "Admin"
+  },
+  "hero": {
+    "badge": "Fullstack Developer & Digital Solutions Creator",
+    "title": "Premium",
+    "titleHighlight": "Digital Solutions",
+    "titleEnd": "For Your Business",
+    "subtitle": "I design and develop business software: POS, CRM, ERP, E-learning and more. Tested, delivered and supported solutions.",
+    "cta_primary": "View Solutions",
+    "cta_secondary": "Try a Demo",
+    "cta_contact": "Contact Me",
+    "scroll": "Discover"
+  },
+  "stats": {
+    "projects": "Projects Delivered",
+    "clients": "Happy Clients",
+    "years": "Years of Experience",
+    "support": "Reactive Support"
+  },
+  "services": {
+    "title": "My Services",
+    "subtitle": "Complete solutions to digitize your business",
+    "dev": {
+      "title": "Custom Development",
+      "desc": "Web and mobile applications tailored to your business needs"
+    },
+    "smma": {
+      "title": "Digital Marketing",
+      "desc": "Digital strategy, social media and lead generation"
+    },
+    "saas": {
+      "title": "Ready-made SaaS",
+      "desc": "Ready-to-deploy software: POS, CRM, ERP, HR"
+    },
+    "support": {
+      "title": "Support & Training",
+      "desc": "Onboarding, team training and ongoing maintenance"
+    }
+  },
+  "marketplace": {
+    "title": "Solutions Marketplace",
+    "subtitle": "Business software ready to deploy",
+    "all": "All",
+    "featured": "Featured",
+    "filter_price": "Price",
+    "filter_rating": "Rating",
+    "filter_sales": "Sales",
+    "demo": "Try Demo",
+    "buy": "Order Now",
+    "whatsapp": "Order via WhatsApp",
+    "sales": "sales",
+    "reviews": "reviews",
+    "features": "Features",
+    "changelog": "Changelog",
+    "faq": "FAQ",
+    "overview": "Overview",
+    "tech": "Technologies",
+    "demo_modal_title": "Demo Access",
+    "demo_modal_desc": "Test for free for 2 hours",
+    "demo_email": "Email",
+    "demo_password": "Password",
+    "demo_role": "Role",
+    "demo_launch": "Launch Demo",
+    "demo_warning": "Data is reset every 2 hours"
+  },
+  "testimonials": {
+    "title": "What They Say",
+    "subtitle": "Satisfied clients across Morocco"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know",
+    "q1": "Can I test before buying?",
+    "a1": "Yes, every solution has a free live demo with real test data.",
+    "q2": "How does installation work?",
+    "a2": "I handle the full installation on your server or cloud hosting. Timeline: 24-48 hours.",
+    "q3": "Is support included?",
+    "a3": "WhatsApp and email support is included. Extended maintenance contracts are available.",
+    "q4": "Can solutions be customized?",
+    "a4": "Yes, all solutions are customizable: logo, colors, specific features.",
+    "q5": "What payment methods are accepted?",
+    "a5": "Bank transfer, check, cash or installment payments depending on the amount."
+  },
+  "contact": {
+    "title": "Let's Start Your Project",
+    "subtitle": "Reach out via WhatsApp or the form below",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Your message",
+    "send": "Send",
+    "whatsapp": "Chat on WhatsApp",
+    "success": "Message sent! I'll reply within 24 hours.",
+    "error": "Send error. Retry or contact via WhatsApp."
+  },
+  "footer": {
+    "tagline": "Premium digital solutions for Moroccan businesses",
+    "links": "Quick links",
+    "legal": "© 2024 WeDev. All rights reserved.",
+    "made": "Made with passion in Morocco 🇲🇦"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full name",
+    "forgot": "Forgot password?",
+    "no_account": "No account?",
+    "have_account": "Already have an account?",
+    "google": "Continue with Google",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "my_orders": "My Orders",
+    "my_licenses": "My Licenses",
+    "support": "Support",
+    "profile": "Profile"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "users": "Users",
+    "contacts": "Contacts",
+    "blog": "Blog",
+    "testimonials": "Testimonials",
+    "demos": "Demos",
+    "analytics": "Analytics"
+  },
+  "blog": {
+    "title": "Blog & Resources",
+    "subtitle": "Tips, tutorials and digital news",
+    "read_more": "Read more",
+    "min_read": "min read"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "from": "From",
+    "free": "Free",
+    "view_all": "View all"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "marketplace": "Solutions",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "login": "Connexion",
+    "dashboard": "Tableau de bord",
+    "admin": "Administration"
+  },
+  "hero": {
+    "badge": "Développeur Fullstack & Créateur de Solutions",
+    "title": "Des Solutions",
+    "titleHighlight": "Digitales Premium",
+    "titleEnd": "Pour Votre Business",
+    "subtitle": "Je conçois et développe des logiciels métier sur mesure : POS, CRM, ERP, E-learning et plus. Solutions testées, livrées et supportées.",
+    "cta_primary": "Voir les Solutions",
+    "cta_secondary": "Tester une Démo",
+    "cta_contact": "Me Contacter",
+    "scroll": "Découvrir"
+  },
+  "stats": {
+    "projects": "Projets Livrés",
+    "clients": "Clients Satisfaits",
+    "years": "Années d'Expérience",
+    "support": "Support Réactif"
+  },
+  "services": {
+    "title": "Mes Services",
+    "subtitle": "Des solutions complètes pour digitaliser votre entreprise",
+    "dev": {
+      "title": "Développement Sur Mesure",
+      "desc": "Applications web et mobiles personnalisées selon vos besoins métier"
+    },
+    "smma": {
+      "title": "Marketing Digital",
+      "desc": "Stratégie digitale, réseaux sociaux et génération de leads"
+    },
+    "saas": {
+      "title": "Solutions SaaS Prêtes",
+      "desc": "Logiciels métier prêts à l'emploi : POS, CRM, ERP, RH"
+    },
+    "support": {
+      "title": "Support & Formation",
+      "desc": "Accompagnement, formation équipe et maintenance continue"
+    }
+  },
+  "marketplace": {
+    "title": "Marketplace Solutions",
+    "subtitle": "Des logiciels métier prêts à déployer",
+    "all": "Toutes",
+    "featured": "Vedettes",
+    "filter_price": "Prix",
+    "filter_rating": "Note",
+    "filter_sales": "Ventes",
+    "demo": "Tester Démo",
+    "buy": "Commander",
+    "whatsapp": "Commander via WhatsApp",
+    "sales": "ventes",
+    "reviews": "avis",
+    "features": "Fonctionnalités",
+    "changelog": "Changelog",
+    "faq": "FAQ",
+    "overview": "Aperçu",
+    "tech": "Technologies",
+    "demo_modal_title": "Accès Démo",
+    "demo_modal_desc": "Testez gratuitement pendant 2 heures",
+    "demo_email": "Email",
+    "demo_password": "Mot de passe",
+    "demo_role": "Rôle",
+    "demo_launch": "Lancer la Démo",
+    "demo_warning": "Les données sont réinitialisées toutes les 2 heures"
+  },
+  "testimonials": {
+    "title": "Ce qu'ils disent",
+    "subtitle": "Des clients satisfaits à travers le Maroc"
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Tout ce que vous devez savoir",
+    "q1": "Puis-je tester avant d'acheter ?",
+    "a1": "Oui, chaque solution dispose d'une démo live gratuite avec des données de test réelles.",
+    "q2": "Comment se passe l'installation ?",
+    "a2": "Je m'occupe de l'installation complète sur votre serveur ou en hébergement cloud. Délai : 24-48h.",
+    "q3": "Le support est-il inclus ?",
+    "a3": "Un support par WhatsApp et email est inclus. Des contrats de maintenance étendus sont disponibles.",
+    "q4": "Peut-on personnaliser les solutions ?",
+    "a4": "Oui, toutes les solutions sont personnalisables : logo, couleurs, fonctionnalités spécifiques.",
+    "q5": "Quels sont les modes de paiement ?",
+    "a5": "Virement bancaire, chèque, espèces ou paiement en plusieurs fois selon le montant."
+  },
+  "contact": {
+    "title": "Démarrons votre Projet",
+    "subtitle": "Contactez-moi via WhatsApp ou le formulaire",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "subject": "Sujet",
+    "message": "Votre message",
+    "send": "Envoyer",
+    "whatsapp": "Écrire sur WhatsApp",
+    "success": "Message envoyé ! Je vous réponds dans les 24h.",
+    "error": "Erreur d'envoi. Réessayez ou contactez via WhatsApp."
+  },
+  "footer": {
+    "tagline": "Solutions digitales premium pour entreprises marocaines",
+    "links": "Liens rapides",
+    "legal": "© 2024 WeDev. Tous droits réservés.",
+    "made": "Fait avec passion au Maroc 🇲🇦"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "Inscription",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom complet",
+    "forgot": "Mot de passe oublié ?",
+    "no_account": "Pas de compte ?",
+    "have_account": "Déjà un compte ?",
+    "google": "Continuer avec Google",
+    "logout": "Déconnexion"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "my_orders": "Mes Commandes",
+    "my_licenses": "Mes Licences",
+    "support": "Support",
+    "profile": "Profil"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "products": "Produits",
+    "orders": "Commandes",
+    "users": "Utilisateurs",
+    "contacts": "Contacts",
+    "blog": "Blog",
+    "testimonials": "Témoignages",
+    "demos": "Démos",
+    "analytics": "Analytics"
+  },
+  "blog": {
+    "title": "Blog & Ressources",
+    "subtitle": "Conseils, tutoriels et actualités digitales",
+    "read_more": "Lire la suite",
+    "min_read": "min de lecture"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "back": "Retour",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "from": "À partir de",
+    "free": "Gratuit",
+    "view_all": "Voir tout"
+  }
+}
